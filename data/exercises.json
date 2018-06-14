@@ -1,0 +1,9 @@
+[
+  { "id": 0, "name": "Bicep Curls", "date": "2018-06-13" },
+  { "id": 1, "name": "Bench Press", "date": null },
+  { "id": 2, "name": "Exercise 2", "date": "2018-06-13" },
+  { "id": 3, "name": "Exercise 3", "date": "2018-06-13" },
+  { "id": 4, "name": "Exercise 4", "date": "2018-06-13" },
+  { "id": 5, "name": "Exercise 5", "date": "2018-06-13" },
+  { "id": 6, "name": "Exercise 6", "date": "2018-06-13" }
+]

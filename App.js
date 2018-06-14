@@ -1,23 +1,30 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { AppLoading } from 'expo';
+import { parse } from 'date-fns';
+import Exercises from './src/components/Exercises';
+
+const exercisesJson = require('./data/exercises.json');
+
+const getExercises = () =>
+  exercisesJson.map(exercise => ({
+    ...exercise,
+    date: exercise.date == null ? null : parse(exercise.date),
+  }));
 
 export default class App extends React.Component {
+  state = { isReady: false, exercises: [] };
+
+  componentWillMount() {
+    this.setState({
+      exercises: getExercises(),
+      isReady: true,
+    });
+  }
+
   render() {
-    return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
-    );
+    if (!this.state.isReady) {
+      return <AppLoading />;
+    }
+    return <Exercises exercises={this.state.exercises} />;
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
